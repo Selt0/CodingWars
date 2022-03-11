@@ -60,3 +60,9 @@ function sumOfMinimums(arr) {
   arr.forEach(arr => sum += Math.min(...arr))
   return sum
 }
+
+
+//best practice
+function sumOfMinimums2(arr){
+  return arr.reduce((init, currVal) => init + Math.min(...currVal), 0)
+}
