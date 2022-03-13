@@ -72,3 +72,20 @@ function sumOfMinimums2(arr){
 // Task
 
 // Given an array of positive integers (the weights of the people), return a new array/tuple of two integers, where the first one is the total weight of team 1, and the second one is the total weight of team 2.
+
+//p array of numbers
+//r array of two numbers
+//e rowWeights([13, 27, 49])  ==>  return (62, 27)
+//p
+
+function rowWeights(array){
+  let weight1 = []
+  let weight2 = []
+
+  array.forEach((num, ind) => {
+    ind % 2 == 0 ? weight1.push(num) : weight2.push(num)
+  })
+
+  return [weight1.reduce((init, curr) => init + curr, 0),
+    weight2.reduce((init, curr) => init + curr, 0)]
+}
