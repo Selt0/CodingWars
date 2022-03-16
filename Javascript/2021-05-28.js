@@ -103,3 +103,8 @@ function flattenAndSort(array) {
 
  return sortedArr.sort((a, b) => a - b)
 }
+
+// best practice
+function flattenAndSort1(arr) {
+  return [].concat(...arr).sort((a,b) => a -b)
+}
