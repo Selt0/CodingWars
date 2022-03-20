@@ -17,3 +17,8 @@ function triangular( n ) {
   if (n < 0) return 0
   return n*(n+1) / 2
 }
+
+
+// Write a small function that returns the values of an array that are not odd.
+
+// All values in the array will be integers. Return the good values in the order they are given.
