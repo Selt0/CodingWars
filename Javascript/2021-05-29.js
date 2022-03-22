@@ -25,5 +25,4 @@ function triangular( n ) {
 function noOdds( values ){
   // Return all non-odd values
   return values.filter((item) => item % 2 == 0 )
-
 }
