@@ -70,3 +70,13 @@ function angle(n) {
 // Method calling example:
 
 // fizzbuzz(3) -->  [1, 2, "Fizz"]
+function fizzbuzz(n){
+  let arr = []
+  for (let i = 1; i <= n; i++){
+    let str = ''
+    if (i % 3 == 0) str += 'Fizz'
+    if (i % 5 == 0) str += 'Buzz'
+     arr.push(str || i)
+  }
+  return arr
+}
