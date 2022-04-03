@@ -64,3 +64,37 @@ function isSortedAndHow(arr){
 // alphabetWar("zdqmwpbs"); //=> Let's fight again!
 // alphabetWar("zzzzs");    //=> Right side wins!
 // alphabetWar("wwwwwwz");  //=> Left side wins!
+
+function alphabetWar(fight){
+   let leftSide = {
+     w: 4,
+     p: 3,
+     b: 2,
+     s: 1
+   }
+
+   let rightSide = {
+      m: 4,
+      q: 3,
+      d: 2,
+      z: 1
+   }
+   let leftSideScore = 0, rightSideScore = 0
+   let strArr = fight.split('')
+
+   strArr.forEach(letter => {
+     if (letter in leftSide){
+       leftSideScore += leftSide[letter]
+     } else if(letter in rightSide){
+       rightSideScore += rightSide[letter]
+     }
+   })
+
+   if (leftSideScore > rightSideScore){
+     return 'Left side wins!'
+   } else if (rightSideScore > leftSideScore){
+     return 'Right side wins!'
+   } else {
+     return 'Let\'s fight again!'
+   }
+}
