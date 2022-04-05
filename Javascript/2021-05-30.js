@@ -109,3 +109,14 @@ function alphabetWar(fight){
 // So friendship is twice stronger than love :-)
 
 // The input will always be in lowercase and never be empty.
+
+function wordsToMarks(string){
+  let alphabet = [null, 'a', 'b', 'c', 'd', 'e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+
+  let score = 0
+
+  string.split('').forEach(letter => {
+    score += alphabet.indexOf(letter)
+  })
+  return score
+}
