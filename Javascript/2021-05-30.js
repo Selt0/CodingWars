@@ -123,7 +123,7 @@ function wordsToMarks(string){
 
 
 // best practice
-const wordsToMarks = s => [...s].reduce((res, c) => res += c.charCodeAt() - 96, 0)
+const wordsToMarks1 = s => [...s].reduce((res, c) => res += c.charCodeAt() - 96, 0)
 
 
 // You will be given an array of objects (hashes in ruby) representing data about developers who have signed up to attend the coding meetup that you are organising for the first time.
@@ -147,3 +147,9 @@ const wordsToMarks = s => [...s].reduce((res, c) => res += c.charCodeAt() - 96, 
 
 //     The format of the strings will always be Europe and JavaScript.
 //     All data will always be valid and uniform as in the example above.
+
+function countDevelopers(list) {
+  return list.filter(item => {
+    return item.continent == 'Europe' && item.language == 'JavaScript'
+  }).length
+}
