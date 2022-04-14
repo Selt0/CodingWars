@@ -125,4 +125,3 @@ function maskify(cc) {
 function maskify2(cc){
   return cc.slice(0, -4).replcae(/./g, '#') + cc.slice(-4)
 }
->>>>>>> d2484604af1d015143650774d1030f0898c467b2
