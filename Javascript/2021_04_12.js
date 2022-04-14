@@ -1,83 +1,128 @@
-// In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
 
-// At the end of the first year there will be: 
-// 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+// Examples input/output:
 
-// At the end of the 2nd year there will be: 
-// 1070 + 1070 * 0.02 + 50 => 1141 inhabitants (** number of inhabitants is an integer **)
+// XO("ooxx") => true
+// XO("xooxx") => false
+// XO("ooxXm") => true
+// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+// XO("zzoo") => false
 
-// At the end of the 3rd year there will be:
-// 1141 + 1141 * 0.02 + 50 => 1213
+function XO(str){
+  let strArr = str.split('')
+  let xLength = strArr.filter(letter => letter.toLowerCase() == 'x').length
+  let oLength = strArr.filter(letter => letter.toLowerCase() == 'o').length
+  return xLength == oLength
+}
 
-// It will need 3 entire years.
 
-// More generally given parameters:
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
 
-// p0, percent, aug (inhabitants coming or leaving each year), p (population to surpass)
+// Example: (Input --> Output)
 
-// the function nb_year should return n number of entire years needed to get a population greater or equal to p.
+// "Dermatoglyphics" --> true
+// "aba" --> false
+// "moOse" --> false (ignore letter case)
 
-// aug is an integer, percent a positive or null floating number, p0 and p are positive integers (> 0)
+function isIsogram(str){
+ for (let i = 0; i < str.length; i++){
+   for (let j = i+1; j < str.length; j++){
+    if (str[i].toLowerCase() == str[j].toLowerCase())
+      return false
+   }
+ }
+ return true
+}
 
-function nbYear(p0, percent, aug, p) {
-  let years = 0
-  while (p0 < p){
-    p0 = Math.floor(p0 + p0 * percent/100 + aug)
-    years ++
+// best practice 
+function isIsogram2(str){
+  return new Set(str.toUpperCase()).size == str.length
+}
+
+// Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it. If the two numbers are equal return a or b.
+
+// Note: a and b are not ordered!
+// Examples (a, b) --> output (explanation)
+
+// (1, 0) --> 1 (1 + 0 = 1)
+// (1, 2) --> 3 (1 + 2 = 3)
+// (0, 1) --> 1 (0 + 1 = 1)
+// (1, 1) --> 1 (1 since both are same)
+// (-1, 0) --> -1 (-1 + 0 = -1)
+// (-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)
+
+function getSum(a, b){
+  let start, end, sum = 0
+  if (a > b){
+    start = b
+    end = a
+  } else {
+    start = a
+    end = b
+  }  
+
+  for(let i = start; i <= end; i++ ){
+    sum += i
+    console.log(sum)
   }
-return years
+  return sum
 }
 
-// Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+//best practice
+function getSum2(a, b){
+  let min = Math.min(a, b),
+      max = Math.max(a, b)
 
-// (In this case, all triangles must have surface greater than 0 to be accepted).
-function isTriangle(a,b,c){
-  return a + b > c && a + c > b && b + c > a
-}
-
-// Make a program that filters a list of strings and returns a list with only your friends name in it.
-
-// If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
-
-// Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
-
-// i.e.
-
-// friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
-
-// Note: keep the original order of the names in the output.
-function friend(friends){
-  return friends.filter(name => name.length == 4)
+  return (max - min + 1) * (min + max) / 2
 }
 
 
-// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+// Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
 
-// If the function is passed a valid PIN string, return true, else return false.
-// Examples (Input --> Output)
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
 
-// "1234"   -->  true
-// "12345"  -->  false
-// "a234"   -->  false
+// [10, 343445353, 3453445, 3453545353453] should return 3453455.
 
-function validatePIN(pin) {
-  return /^(\d{4}|\d{6})$/.test(pin)
+function sumTwoSmallestNumbers(numbers) {  
+  let lowest = Math.min(...numbers)
+  numbers.splice(numbers.indexOf(lowest),1)
+  let secondLowest = Math.min(...numbers)
+  return lowest + secondLowest
+}
+
+//best practice
+function sumTwoSmallestNumbers2(numbers){
+  numbers = numbers.sort((a,b) => a - b)
+  return numbers[0] + numbers[1]
 }
 
 
-// Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
-// Examples:
+// Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
 
-// a = "xyaabbbccccdefww"
-// b = "xxxxyyyyabklmopq"
-// longest(a, b) -> "abcdefklmopqwxy"
+// Your task is to write a function maskify, which changes all but the last four characters into '#'.
+// Examples
 
-// a = "abcdefghijklmnopqrstuvwxyz"
-// longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
-function longest(s1, s2) {
-  let combinedSortedArr = Array.from(s1+s2).sort()
-  return  [...new Set(combinedSortedArr)].join('')
+// "4556364607935616" --> "############5616"
+//      "64607935616" -->      "#######5616"
+//                "1" -->                "1"
+//                 "" -->                 ""
+
+// // "What was the name of your first pet?"
+// "Skippy" --> "##ippy"
+
+// "Nananananananananananananananana Batman!"  --> "####################################man!"
+
+function maskify(cc) {
+  let masked = ''
+  for (let i = 0; i < cc.length - 4; i++){
+    masked += '#'
+  }
+
+  return masked += cc.slice(-4)
 }
 
-  //best practice
-  const longest = (s1, s2) => [...new Set(s1+s2)].sort().join('')
+//best practice 
+function maskify2(cc){
+  return cc.slice(0, -4).replcae(/./g, '#') + cc.slice(-4)
+}
+>>>>>>> d2484604af1d015143650774d1030f0898c467b2
