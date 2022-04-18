@@ -20,3 +20,11 @@ function getEvenNumbers(numbersArray){
 // Example
 
 // predictAge(65, 60, 75, 55, 60, 63, 64, 45) === 86
+function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
+  let totalSum = 0
+  for(let i = 0; i < arguments.length; i++){
+    totalSum += arguments[i]**2
+  }
+  let sqrt = Math.sqrt(totalSum)
+  return Math.floor(sqrt / 2)
+}
