@@ -28,3 +28,12 @@ function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
   let sqrt = Math.sqrt(totalSum)
   return Math.floor(sqrt / 2)
 }
+
+// Given a number, write a function to output its reverse digits. (e.g. given 123 the answer is 321)
+
+// Numbers should preserve their sign; i.e. a negative number should still be negative when reversed.
+// Examples
+
+//  123 ->  321
+// -456 -> -654
+// 1000 ->    1
