@@ -114,3 +114,29 @@ function findLongest(array){
 // s = "abcd\nefgh\nijkl\nmnop"
 // oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
 // oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
+
+function vertMirror(strng) {
+  let str = ''
+  let arr = []
+  for(let i = 0; i < strng.length; i++){
+
+    if (strng[i] == '\n'){
+      arr.push(str)
+      str = ''
+    } else {
+      str += strng[i]
+      if (i == strng.length-1){
+        arr.push(str)
+      }
+    }
+  }
+  return arr.map(word => word.split('').reverse().join('')).join('\n')
+
+}
+
+function horMirror(strng) {
+  return strng.split('\n').reverse().join('\n')
+}
+function oper(fct, s) {
+  return fct(s)
+}
