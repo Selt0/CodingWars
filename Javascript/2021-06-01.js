@@ -96,3 +96,17 @@ function vowelIndices(word){
 // Explanation:
 
 //     The maximum product obtained from multiplying -2 * 7 = -14, and they're adjacent numbers in the array.
+function adjacentElementsProduct(array) {
+  let highestPr =  array[0] * array[1]
+  for (let i = 0; i < array.length; i++){
+    let pr = array[i] * array[i+1]
+    if(pr > highestPr) {
+      highestPr = pr
+    }
+
+    if (i + 1 == array.length) break
+  }
+  return highestPr
+}
+
+adjacentElementsProduct([-23, 4, -5, 99, -27, 329, -2, 7, -921])
