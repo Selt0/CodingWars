@@ -50,33 +50,33 @@ function rowSumOddNumbers(n) {
 // printer_error(s) => "0/14"
 // s="aaaxbbbbyyhwawiwjjjwwm"
 // printer_error(s) => "8/22"
-function printer_error(s) {
+function printerError(s) {
   let errorRegex = /[n-z]/i
-  let previousLetter = ''
   let errorCount = 0
   s.split('').forEach(letter => {
-    console.log(`${letter}`)
-    console.log(`previous: ${previousLetter}`)
-    console.log(`test: ${errorRegex.test(letter)}`)
-    if(previousLetter != letter && errorRegex.test(letter)){
+    if(errorRegex.test(letter)){
       errorCount++
-      previousLetter = letter
     }
-    return `${errorCount}/${s.length}`
   })
+    return `${errorCount}/${s.length}`
 }
-let s="aaabbbbhaijjjm"
-printer_error(s)
 
-let b ="aaaxbbbbyyhwawiwjjjwwm"
-printer_error(b)
+function printerError(s){
+  let errorRegex = /[n-z]/gi
+  return `${s.match(errorRegex) == null ? 0 : s.match(errorRegex).length }/${s.length}`
+}
+
+// best practice
+const printerError = s => `${s.replace(/[a-m]/gi, "").length}/${s.length}`;
 
 //Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
 //Examples:
 //solution('abc', 'bc') // returns true
 //solution('abc', 'd') // returns false
 
-
+function solution(str, ending){
+  return str.endsWith(ending)
+}
 
 // Given an array of ones and zeroes, convert the equivalent binary value to an integer.
 // Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
