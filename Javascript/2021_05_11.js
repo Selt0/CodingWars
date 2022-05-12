@@ -50,8 +50,26 @@ function rowSumOddNumbers(n) {
 // printer_error(s) => "0/14"
 // s="aaaxbbbbyyhwawiwjjjwwm"
 // printer_error(s) => "8/22"
+function printer_error(s) {
+  let errorRegex = /[n-z]/i
+  let previousLetter = ''
+  let errorCount = 0
+  s.split('').forEach(letter => {
+    console.log(`${letter}`)
+    console.log(`previous: ${previousLetter}`)
+    console.log(`test: ${errorRegex.test(letter)}`)
+    if(previousLetter != letter && errorRegex.test(letter)){
+      errorCount++
+      previousLetter = letter
+    }
+    return `${errorCount}/${s.length}`
+  })
+}
+let s="aaabbbbhaijjjm"
+printer_error(s)
 
-
+let b ="aaaxbbbbyyhwawiwjjjwwm"
+printer_error(b)
 
 //Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
 //Examples:
