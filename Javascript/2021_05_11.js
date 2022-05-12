@@ -90,3 +90,4 @@ function solution(str, ending){
 // Testing: [1, 1, 1, 1] ==> 15
 // Testing: [1, 0, 1, 1] ==> 11
 // However, the arrays can have varying lengths, not just limited to 4.
+const binaryArrayToNumber = arr => parseInt(arr.join(''),2)
