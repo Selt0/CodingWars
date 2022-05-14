@@ -27,5 +27,10 @@ const number = (busStops) => busStops.reduce((rem, [on, off]) => rem + on - off,
 // divisors(25); // should return [5]
 // divisors(13); // should return "13 is prime"
 function divisors(integer) {
-  
+  let divisors = []
+  for (let i = 2; i <= integer; i++){
+    if(integer % i == 0 && i != integer) divisors.push(i)
+  }
+  if (divisors.length == 0) return `${integer} is prime`
+  return divisors
 };
