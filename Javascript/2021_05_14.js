@@ -65,14 +65,47 @@ function oddOrEven(array) {
 // 2 --> 1 + 1/4 --> "1.25"
 // 5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"
 
-function SeriesSum(n)
-{
+function SeriesSum(n){
+  if (n == 0) return Number(0).toFixed(2)
   let arr = [1]
-let x  = 4
+  let x  = 4
 
-  for (let i = n -1; i < 0; i--){
+  for (let i = n-1; i > 0; i--){
     arr.push(1/x)
     x+=3
   }
-  console.log(arr) 
+    return arr.reduce((a,b) => a + b, 0).toFixed(2)    
+ }
+
+ //best practice
+ function SeriesSum2(n) {
+  for (let s = 0, i = 0; i < n; i++) {
+    s += 1 / (1 + i * 3)
+  }
+  
+  return s.toFixed(2)
+}
+
+// The museum of incredible dull things wants to get rid of some exhibitions. Miriam, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and then removes the one with the lowest rating.
+// However, just as she finished rating all exhibitions, she's off to an important fair, so she asks you to write a program that tells her the ratings of the items after one removed the lowest one. Fair enough.
+
+// Task
+// Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
+
+// Don't change the order of the elements that are left.
+// Examples
+
+// * Input: [1,2,3,4,5], output= [2,3,4,5]
+// * Input: [5,3,2,1,4], output = [5,3,2,4]
+// * Input: [2,2,1,2,1], output = [2,2,2,1]
+function removeSmallest(numbers) {
+  if (numbers.length == 0) return []
+  let smallest = numbers[0]
+  for (let i = 1; i < numbers.length; i++){
+    if (numbers[i] < smallest) smallest = numbers[i]
+  }
+  
+  let arrCopy = numbers.slice()
+  arrCopy.splice(arrCopy.indexOf(smallest),1)
+  return arrCopy
 }
