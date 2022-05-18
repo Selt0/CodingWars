@@ -104,3 +104,32 @@ function twoOldestAges(ages){
   return sorted.slice(-2)
 }
 
+
+// Your task is to write function findSum.
+
+// Upto and including n, this function will return the sum of all multiples of 3 and 5.
+
+// For example:
+
+// findSum(5) should return 8 (3 + 5)
+
+// findSum(10) should return 33 (3 + 5 + 6 + 9 + 10)
+
+//p number
+//r sum of incrment up to n
+//e findSum(3) => 3
+//p
+
+function findSum(n) {
+  //create empty arr
+  let multiples = []
+  //increment up to n
+  for (let i = 0; i <= n; i++){
+  // check and push multiples of 3 or 5
+    if( i % 3 == 0 || i % 5 == 0){
+      multiples.push(i)
+    }
+  }
+  //reduce arr for sum
+  return multiples.reduce((a,b) => a + b, 0)
+}
