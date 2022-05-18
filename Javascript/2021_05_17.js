@@ -104,4 +104,3 @@ function twoOldestAges(ages){
   return sorted.slice(-2)
 }
 
-console.log(twoOldestAges([1,5,87,45,8,8]))
