@@ -37,3 +37,15 @@ function predictAge(age1,age2,age3,age4,age5,age6,age7,age8){
 //  123 ->  321
 // -456 -> -654
 // 1000 ->    1
+
+function reverseNumber(n) {
+  let newNum = String(n).split('')
+  if (n < 0){
+    newNum.reverse()
+    let neg = newNum.pop()
+    newNum.unshift(neg)
+    return parseInt(newNum.join(''))
+  } else {
+    return Number(newNum.reverse().join(''))
+  }
+}
