@@ -138,3 +138,23 @@ function adjacentElementsProduct(array) {
 // 1353 + 3531 = 4884     - step 4, palindrome!
 
 // 4884 is a palindrome and we needed 4 steps to obtain it, so answer for 87 is 4.
+var palindromeChainLength = function(n) {
+    let counter = 0
+
+    while(!isPalindrome(n)){
+    n = n + reverseNum(n)
+    counter++
+    }
+    return counter
+
+
+};
+
+function isPalindrome(num){
+  let reveresed = Number(String(num).split('').reverse().join(''))
+  return num == reveresed
+}
+
+function reverseNum(n){
+  return Number(String(num).split('').reverse().join(''))
+}
