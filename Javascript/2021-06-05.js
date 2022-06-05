@@ -8,3 +8,30 @@ function bump(x) {
   let bumpsOnRoad = x.split('').filter(letter => letter == 'n').length
   return bumpsLeft < bumpsOnRoad ? "Car Dead" : "Woohoo!"
 }
+
+// Description:
+
+// We want to generate a function that computes the series starting from 0 and ending until the given number.
+var SequenceSum = (function () {
+  function SequenceSum() { }
+
+  SequenceSum.showSequence = function (count) {
+    let string = ''
+    let sum = 0
+    if (count == 0) return '0=0'
+    if (count < 0) return `${count}<0`
+    for (let i = 0; i <= count; i++) {
+      if (i == count) {
+        sum += i
+        string += `${i} = ${sum}`
+      } else {
+        sum += i
+        string += `${i}+`
+      }
+    }
+    return string
+  };
+
+  return SequenceSum;
+
+})();
