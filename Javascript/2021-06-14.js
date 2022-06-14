@@ -12,20 +12,23 @@
 // ""  -->  ""
 
 function order(words) {
-	// string to arr
-	words = words.split('')
-	// create copy of arr
+	if (words === '') return ''
+
+	words = words.split(' ')
 	let wordsCopy = [...words]
-	// loop through each word
+
 	words.forEach(word => {
-		//find the number in word
-
-		let index = word.replace(/\d/g, '')
-		// update index in arr to word
-
-		wordsCopy[index] = word
+		let index = word.match(/\d/).join('')
+		wordsCopy[index - 1] = word
 	})
 
-	// join new arr
 	return wordsCopy.join(' ')
+}
+
+//best practice
+function order(words) {
+	return words
+		.split(' ')
+		.sort((a, b) => a.match(/\d/) - b.match(/\d/))
+		.join(' ')
 }
